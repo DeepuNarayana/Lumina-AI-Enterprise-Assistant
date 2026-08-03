@@ -1,21 +1,31 @@
+
 class PromptBuilder:
+
     def build_prompt(
         self,
-        message:str
-    )-> str:
+        query: str,
+        retrieved_chunks: list[str]
+    ):
+
+        context = "\n\n".join(retrieved_chunks)
 
         prompt= f"""
-You are Lumina AI, an Enterprise AI Assistant.
+You are an intelligent AI Enterprise Assistant.
 
-Role:
-- Help employees professionally.
-- Answer business-related questions.
-- Be concise and accurate.
-- If you don't know something, clearly say so.
-- Never generate harmful or misleading content.
+Answer ONLY using the context below.
 
-User Question:
-{message}
+If the answer is not present in the context, reply:
 
+"I couldn't find this information in the provided documents."
+
+----------------------
+context:
+{context}
+----------------------
+
+Question:
+{query}
+
+Answer:
 """
-        return prompt.strip()
+        return prompt
