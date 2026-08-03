@@ -1,6 +1,6 @@
 import chromadb
 
-class ChromaService:
+class ChromaDBService:
     def __init__(self):
 
         self.client = chromadb.PersistentClient(
@@ -11,7 +11,7 @@ class ChromaService:
             name = "documents"
         )
 
-    def store_document(
+    def store_documents(
         self,
         document_id,
         chunks,
