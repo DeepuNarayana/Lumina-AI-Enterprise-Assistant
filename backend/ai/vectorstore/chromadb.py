@@ -38,3 +38,18 @@ class ChromaDBService:
             metadatas = metadatas,
             documents = documents
         )
+
+    def search(
+        self,
+        embedding,
+        top_k=5
+    ):
+        results = self.collection.query(
+
+            query_embeddings=[embedding],
+
+            n_results = top_k
+
+        )
+
+        return results
